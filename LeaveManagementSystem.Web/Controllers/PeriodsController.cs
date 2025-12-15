@@ -19,13 +19,20 @@ namespace LeaveManagementSystem.Web.Controllers
             _context = context;
         }
 
-        // GET: Periods
+        /// <summary>
+        /// Retrieves all period records from the database and displays them in the index view. (GET: Periods)
+        /// </summary>
         public async Task<IActionResult> Index()
         {
             return View(await _context.Periods.ToListAsync());
         }
 
-        // GET: Periods/Details/5
+        /// <summary>
+        /// Shows detailed information for a specific period.
+        /// Returns NotFound if the ID is missing or if the period cannot be located in the database.
+        /// GET: Periods/Details/5
+        /// </summary>
+        /// <param name="id"></param>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -35,6 +42,7 @@ namespace LeaveManagementSystem.Web.Controllers
 
             var period = await _context.Periods
                 .FirstOrDefaultAsync(m => m.Id == id);
+            
             if (period == null)
             {
                 return NotFound();
@@ -43,13 +51,21 @@ namespace LeaveManagementSystem.Web.Controllers
             return View(period);
         }
 
-        // GET: Periods/Create
+        /// <summary>
+        /// Displays the form used to create a new period records. (GET: Periods/Create)
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Periods/Create
+        /// <summary>
+        /// Creates a new period entry after validating the submitted model.
+        /// Saves the period to the database and redirects to the index view if successful.
+        /// POST: Periods/Create
+        /// </summary>
+        /// <param name="period"></param>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Name,StartDate,EndDate,Id")] Period period)
@@ -63,7 +79,12 @@ namespace LeaveManagementSystem.Web.Controllers
             return View(period);
         }
 
-        // GET: Periods/Edit/5
+        /// <summary>
+        /// Retrieves an existing period by ID and displays it for editing.
+        /// Returns NotFound if the ID is missing or if the period does not exist.
+        /// GET: Periods/Edit/5
+        /// </summary>
+        /// <param name="id"></param>
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -79,7 +100,15 @@ namespace LeaveManagementSystem.Web.Controllers
             return View(period);
         }
 
-        // POST: Periods/Edit/5
+        /// <summary>
+        /// Updates an existing period after validating the model.
+        /// Ensures the requested ID matches the period being edited.
+        /// Attempts to save changes and handles concurrency exceptions.
+        /// Redirects to the index upon successful update.
+        /// POST: Periods/Edit/5
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="period"></param>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Name,StartDate,EndDate,Id")] Period period)
@@ -112,7 +141,12 @@ namespace LeaveManagementSystem.Web.Controllers
             return View(period);
         }
 
-        // GET: Periods/Delete/5
+        /// <summary>
+        /// Retrieves a period to confirm deletion.
+        /// Returns NotFound if the ID is missing or the period cannot be found.
+        /// GET: Periods/Delete/5
+        /// </summary>
+        /// <param name="id"></param>
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -130,7 +164,11 @@ namespace LeaveManagementSystem.Web.Controllers
             return View(period);
         }
 
-        // POST: Periods/Delete/5
+        /// <summary>
+        /// Permanently deletes the specified period from the database and redirects to the index view.
+        /// POST: Periods/Delete/5
+        /// </summary>
+        /// <param name="id"></param>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -145,6 +183,10 @@ namespace LeaveManagementSystem.Web.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        /// <summary>
+        /// Checks whether a period with the specified ID exists in the database.
+        /// </summary>
+        /// <param name="id"></param>
         private bool PeriodExists(int id)
         {
             return _context.Periods.Any(e => e.Id == id);

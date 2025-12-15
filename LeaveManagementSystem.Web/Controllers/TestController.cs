@@ -3,7 +3,7 @@
 namespace LeaveManagementSystem.Web.Controllers
 {
     /// <summary>
-    /// This controller creates some test data and sends it to the view to demonstrate how MVC passes a model from      controller to view.
+    /// This controller creates some test data and sends it to the view to demonstrate how MVC passes a model from controller to view.
     /// </summary>
     public class TestController : Controller
     {
@@ -11,8 +11,8 @@ namespace LeaveManagementSystem.Web.Controllers
         {
             var data = new TestViewModel
             {
-                Name = "Student of MVC Mastery",
-                DateOfBirth = new DateTime(1954,12,01)
+                Name = "Rakshit Mehra",
+                DateOfBirth = new DateTime(2003,07,24)
             };
             return View(data);
         }

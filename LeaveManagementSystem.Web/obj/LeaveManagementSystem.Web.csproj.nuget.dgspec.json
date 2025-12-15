@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\RakshitMehra\\source\\repos\\Udemy Course - 3\\LeaveManagementSystem.Web\\LeaveManagementSystem.Web.csproj": {}
+    "C:\\Users\\RakshitMehra\\Desktop\\LeaveManagementSystem-Again\\LeaveManagementSystem.Web\\LeaveManagementSystem.Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\RakshitMehra\\source\\repos\\Udemy Course - 3\\LeaveManagementSystem.Web\\LeaveManagementSystem.Web.csproj": {
+    "C:\\Users\\RakshitMehra\\Desktop\\LeaveManagementSystem-Again\\LeaveManagementSystem.Web\\LeaveManagementSystem.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\RakshitMehra\\source\\repos\\Udemy Course - 3\\LeaveManagementSystem.Web\\LeaveManagementSystem.Web.csproj",
+        "projectUniqueName": "C:\\Users\\RakshitMehra\\Desktop\\LeaveManagementSystem-Again\\LeaveManagementSystem.Web\\LeaveManagementSystem.Web.csproj",
         "projectName": "LeaveManagementSystem.Web",
-        "projectPath": "C:\\Users\\RakshitMehra\\source\\repos\\Udemy Course - 3\\LeaveManagementSystem.Web\\LeaveManagementSystem.Web.csproj",
+        "projectPath": "C:\\Users\\RakshitMehra\\Desktop\\LeaveManagementSystem-Again\\LeaveManagementSystem.Web\\LeaveManagementSystem.Web.csproj",
         "packagesPath": "C:\\Users\\RakshitMehra\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\RakshitMehra\\source\\repos\\Udemy Course - 3\\LeaveManagementSystem.Web\\obj\\",
+        "outputPath": "C:\\Users\\RakshitMehra\\Desktop\\LeaveManagementSystem-Again\\LeaveManagementSystem.Web\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -78,9 +78,13 @@
               "target": "Package",
               "version": "[18.0.2, )"
             },
+            "Microsoft.Build.Tasks.Core": {
+              "target": "Package",
+              "version": "[18.0.2, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[10.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
@@ -94,7 +98,7 @@
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[10.0.0-rc.1.25458.5, )"
             }
           },
           "imports": [

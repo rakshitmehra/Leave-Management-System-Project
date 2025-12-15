@@ -17,14 +17,22 @@ namespace LeaveManagementSystem.Web.Controllers
     {
         private const string NameExistsValidationMessage = "This leave type already exists in the database";
 
-        // GET: LeaveTypes
+        /// <summary>
+        /// Retrieves all leave types from the service and displays them in the index view. (GET: LeaveTypes)
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> Index()
         {
             var viewData = await _leaveTypesService.GetAll();
             return View(viewData);
         }
 
-        // GET: LeaveTypes/Details/5
+        /// <summary>
+        /// GET: LeaveTypes/Details/5
+        /// Displays detailed information for a specific leave type. Returns NotFound if the ID is missing or the leave type cannot be found.
+        /// </summary>
+        /// <param name="id"></param>
+
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -39,13 +47,22 @@ namespace LeaveManagementSystem.Web.Controllers
             return View(leaveType);
         }
 
-        // GET: LeaveTypes/Create
+        /// <summary>
+        /// Displays the form for creating a new leave type. (GET: LeaveTypes/Create)
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: LeaveTypes/Create
+        /// <summary>
+        /// Creates a new leave type after validating the model.
+        /// Checks if a leave type with the same name already exists and adds a model error if so.
+        /// If validation succeeds, saves the new leave type and redirects to the index page.
+        /// POST: LeaveTypes/Create
+        /// </summary>
+        /// <param name="leaveTypeCreate"></param>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(LeaveTypeCreateVM leaveTypeCreate)
@@ -64,7 +81,11 @@ namespace LeaveManagementSystem.Web.Controllers
             return View(leaveTypeCreate);
         }
 
-        // GET: LeaveTypes/Edit/5
+        /// <summary>
+        /// Retrieves an existing leave type for editing.
+        /// Returns NotFound if the ID is missing or the leave type cannot be found. (GET: LeaveTypes/Edit/5)
+        /// </summary>
+        /// <param name="id"></param>
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -80,7 +101,16 @@ namespace LeaveManagementSystem.Web.Controllers
             return View(leaveType);
         }
 
-        // POST: LeaveTypes/Edit/5
+
+        /// <summary>
+        /// Updates an existing leave type after validating the model and ensuring the ID matches.
+        /// Verifies that the edited name does not duplicate an existing leave type's name.
+        /// Attempts to save changes and handles concurrency exceptions.
+        /// Redirects to the index page if successful.
+        /// POST: LeaveTypes/Edit/5
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="leaveTypeEdit"></param>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, LeaveTypeEditVM leaveTypeEdit)
@@ -117,8 +147,12 @@ namespace LeaveManagementSystem.Web.Controllers
             return View(leaveTypeEdit);
         }
 
-
-        // GET: LeaveTypes/Delete/5
+        /// <summary>
+        /// Retrieves a leave type for deletion confirmation.
+        /// Returns NotFound if the ID is missing or the leave type cannot be found.
+        /// GET: LeaveTypes/Delete/5
+        /// </summary>
+        /// <param name="id"></param>
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -134,7 +168,12 @@ namespace LeaveManagementSystem.Web.Controllers
             return View(leaveType);
         }
 
-        // POST: LeaveTypes/Delete/5
+        /// <summary>
+        /// Permanently deletes the specified leave type and redirects back to the index page.
+        /// POST: LeaveTypes/Delete/5
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

@@ -1,0 +1,95 @@
+﻿@model ReviewLeaveRequestVM
+
+@{
+    ViewData["Title"] = "Leave Request Review";
+}
+
+<h1 class="fw-bold mb-4">Leave Request Review</h1>
+
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+        <h4 class="fw-bold text-primary mb-3">Requesting Employee</h4>
+
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <strong>Name:</strong>
+                <span>@Model.Employee.FirstName @Model.Employee.LastName</span>
+            </div>
+            <div class="col-sm-6">
+                <strong>Email:</strong>
+                <span>@Model.Employee.Email</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-light fw-bold">Request Details</div>
+    <div class="card-body">
+        <dl class="row mb-0">
+            <dt class="col-sm-3">@Html.DisplayNameFor(m => m.LeaveType)</dt>
+            <dd class="col-sm-9">@Model.LeaveType</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(m => m.StartDate)</dt>
+            <dd class="col-sm-9">@Model.StartDate.ToShortDateString()</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(m => m.EndDate)</dt>
+            <dd class="col-sm-9">@Model.EndDate.ToShortDateString()</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(m => m.RequestComments)</dt>
+            <dd class="col-sm-9 text-muted">
+                @(!string.IsNullOrWhiteSpace(Model.RequestComments)
+                                ? Model.RequestComments
+                                : "<i>No comments provided.</i>")
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div class="d-flex gap-3 mb-5">
+    <button class="btn btn-success approvalBtn"
+            data-id="@Model.Id" data-approved="true">
+        <i class="bi bi-check-circle"></i> Approve
+    </button>
+
+    <button class="btn btn-danger approvalBtn"
+            data-id="@Model.Id" data-approved="false">
+        <i class="bi bi-x-circle"></i> Decline
+    </button>
+
+    <a class="btn btn-outline-secondary" asp-action="ListRequests">
+        <i class="bi bi-arrow-left"></i> Back to List
+    </a>
+</div>
+
+<form asp-action="Review" id="approvalForm">
+    <input type="hidden" name="id" id="leaveRequestId" />
+    <input type="hidden" name="approved" id="approved" />
+</form>
+
+@section Scripts {
+    <script>
+        $(function () {
+            $('.approvalBtn').click(
+                function (e) {
+                    swal({
+                        title: "Are you sure?",
+                        text: "Please confirm this approval decision",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true
+                    }).then((confirm) => {
+                        if (confirm) {
+                            var btn = $(this);
+                            var id = btn.data("id");
+                            var approved = btn.data("approved");
+                            $('#leaveRequestId').val(id);
+                            $('#approved').val(approved);
+                            $('#approvalForm').submit();
+                        }
+                    });
+                }
+            );
+        });
+    </script>
+}

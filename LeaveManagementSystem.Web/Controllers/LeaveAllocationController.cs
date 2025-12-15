@@ -14,6 +14,9 @@ namespace LeaveManagementSystem.Web.Controllers
     [Authorize]
     public class LeaveAllocationController(ILeaveAllocationsService _leaveAllocationsService, ILeaveTypesService _leaveTypesService) : Controller
     {
+        /// <summary>
+        /// Displays a list of all employees so the administrator can view or manage their leave allocations.
+        /// </summary>
         [Authorize(Roles = Roles.Administrator)]
         public async Task<IActionResult> Index()
         {
@@ -21,6 +24,10 @@ namespace LeaveManagementSystem.Web.Controllers
             return View(employees);
         }
 
+        /// <summary>
+        /// Allocates leave for the specified employee and then redirects to the employee's allocation details page.
+        /// </summary>
+        /// <param name="id"></param>
         [Authorize(Roles = Roles.Administrator)]
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -30,6 +37,11 @@ namespace LeaveManagementSystem.Web.Controllers
             return RedirectToAction(nameof(Details), new { userId = id });
         }
 
+        /// <summary>
+        /// Retrieves an existing leave allocation by its ID and displays it for editing.
+        /// Returns NotFound if the ID is missing or the allocation cannot be found.
+        /// </summary>
+        /// <param name="id"></param>
         [Authorize(Roles = Roles.Administrator)]
         public async Task<IActionResult> EditAllocation(int? id)
         {
@@ -46,6 +58,12 @@ namespace LeaveManagementSystem.Web.Controllers
             return View(allocation);
         }
 
+        /// <summary>
+        /// Validates and updates an employee's leave allocation. 
+        /// Ensures the number of days does not exceed the maximum allowed for the leave type.
+        /// If validation fails, reloads the original allocation data and returns the view.
+        /// </summary>
+        /// <param name="allocation"></param>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditAllocation(LeaveAllocationEditVM allocation)
@@ -67,6 +85,10 @@ namespace LeaveManagementSystem.Web.Controllers
             return View(allocation);
         }
 
+        /// <summary>
+        /// Displays all leave allocations for a specific employee so the administrator can review them.
+        /// </summary>
+        /// <param name="userId"></param>
         public async Task<IActionResult> Details(string? userId)
         {
             var employeeVm = await _leaveAllocationsService.GetEmployeeAllocations(userId);
