@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "LeaveManagementSystem.Common/1.0.0": {
+        "runtime": {
+          "LeaveManagementSystem.Common.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "LeaveManagementSystem.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

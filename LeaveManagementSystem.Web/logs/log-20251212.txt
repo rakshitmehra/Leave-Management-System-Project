@@ -1,0 +1,23 @@
+2025-12-12 09:30:01.286 +00:00 [INF] Now listening on: https://localhost:7188
+2025-12-12 09:30:01.337 +00:00 [INF] Now listening on: http://localhost:5289
+2025-12-12 09:30:01.383 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-12 09:30:01.386 +00:00 [INF] Hosting environment: Development
+2025-12-12 09:30:01.388 +00:00 [INF] Content root path: C:\Users\RakshitMehra\source\repos\Udemy Course - 3\LeaveManagementSystem.Web
+2025-12-12 09:30:12.701 +00:00 [INF] User logged in.
+2025-12-12 09:33:58.152 +00:00 [INF] Now listening on: https://localhost:7188
+2025-12-12 09:33:58.198 +00:00 [INF] Now listening on: http://localhost:5289
+2025-12-12 09:33:58.319 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-12 09:33:58.323 +00:00 [INF] Hosting environment: Development
+2025-12-12 09:33:58.330 +00:00 [INF] Content root path: C:\Users\RakshitMehra\source\repos\Udemy Course - 3\LeaveManagementSystem.Web
+2025-12-12 09:34:23.827 +00:00 [INF] User logged in.
+2025-12-12 09:54:58.903 +00:00 [INF] Now listening on: https://localhost:7188
+2025-12-12 09:54:58.950 +00:00 [INF] Now listening on: http://localhost:5289
+2025-12-12 09:54:59.034 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-12 09:54:59.036 +00:00 [INF] Hosting environment: Development
+2025-12-12 09:54:59.037 +00:00 [INF] Content root path: C:\Users\RakshitMehra\source\repos\Udemy Course - 3\LeaveManagementSystem.Web
+2025-12-12 09:55:25.031 +00:00 [INF] User logged in.
+2025-12-12 10:04:42.662 +00:00 [INF] Now listening on: https://localhost:7188
+2025-12-12 10:04:42.706 +00:00 [INF] Now listening on: http://localhost:5289
+2025-12-12 10:04:42.784 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-12 10:04:42.794 +00:00 [INF] Hosting environment: Development
+2025-12-12 10:04:42.797 +00:00 [INF] Content root path: C:\Users\RakshitMehra\source\repos\Udemy Course - 3\LeaveManagementSystem.Web

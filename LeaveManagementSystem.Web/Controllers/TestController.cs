@@ -1,4 +1,4 @@
-﻿using LeaveManagementSystem.Web.Models;
+﻿using LeaveManagementSystem.Application.Models;
 
 namespace LeaveManagementSystem.Web.Controllers
 {
@@ -12,7 +12,7 @@ namespace LeaveManagementSystem.Web.Controllers
             var data = new TestViewModel
             {
                 Name = "Rakshit Mehra",
-                DateOfBirth = new DateTime(2003,07,24)
+                DateOfBirth = new DateTime(2003, 07, 24)
             };
             return View(data);
         }

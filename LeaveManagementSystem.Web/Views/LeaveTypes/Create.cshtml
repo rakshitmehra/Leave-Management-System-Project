@@ -4,30 +4,57 @@
     ViewData["Title"] = "Create Leave Type";
 }
 
-<h1>Create Leave Type</h1>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <br/>
-            <div class="form-group">
-                <label asp-for="NumberOfDays" class="control-label"></label>
-                <input asp-for="NumberOfDays" class="form-control" />
-                <span asp-validation-for="NumberOfDays" class="text-danger"></span>
-            </div>
-            <input type="hidden" name="Id" value="12"/>
-            <br />
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-success" />
-                <a asp-action="Index" class="btn btn-primary">Back to List</a>
-            </div>
-        </form>
+<div class="container mt-5">
+
+    <div class="mb-4">
+        <h2 class="fw-bold text-success">
+            <i class="bi bi-plus-circle me-2"></i>
+            Create Leave Type
+        </h2>
+        <p class="text-muted mb-0">
+            Define a new leave category and default allocation
+        </p>
+    </div>
+
+    <div class="card shadow-sm border-0 col-lg-6">
+        <div class="card-body">
+
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly"
+                     class="alert alert-danger"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label fw-semibold"></label>
+                    <input asp-for="Name" class="form-control form-control-lg"
+                           placeholder="e.g. Annual Leave" />
+                    <span asp-validation-for="Name" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="NumberOfDays" class="form-label fw-semibold"></label>
+                    <input asp-for="NumberOfDays"
+                           class="form-control"
+                           type="number"
+                           min="0" />
+                    <span asp-validation-for="NumberOfDays" class="text-danger small"></span>
+                </div>
+
+                <input type="hidden" name="Id" value="12" />
+
+                <hr />
+
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left"></i> Back
+                    </a>
+
+                    <button type="submit" class="btn btn-success px-4">
+                        <i class="bi bi-check-circle me-1"></i> Create Leave Type
+                    </button>
+                </div>
+            </form>
+
+        </div>
     </div>
 </div>
 

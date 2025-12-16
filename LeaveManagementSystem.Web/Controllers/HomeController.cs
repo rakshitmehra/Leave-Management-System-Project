@@ -1,4 +1,4 @@
-using LeaveManagementSystem.Web.Models;
+using LeaveManagementSystem.Application.Models;
 using System.Diagnostics;
 
 namespace LeaveManagementSystem.Web.Controllers

@@ -42,7 +42,7 @@ namespace LeaveManagementSystem.Web.Controllers
 
             var period = await _context.Periods
                 .FirstOrDefaultAsync(m => m.Id == id);
-            
+
             if (period == null)
             {
                 return NotFound();

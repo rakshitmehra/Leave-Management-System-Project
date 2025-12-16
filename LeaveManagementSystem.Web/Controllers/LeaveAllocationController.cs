@@ -1,6 +1,6 @@
-﻿using LeaveManagementSystem.Web.Models.LeaveAllocations;
-using LeaveManagementSystem.Web.Services.LeaveAllocations;
-using LeaveManagementSystem.Web.Services.LeaveTypes;
+﻿using LeaveManagementSystem.Application.Models.LeaveAllocations;
+using LeaveManagementSystem.Application.Services.LeaveAllocations;
+using LeaveManagementSystem.Application.Services.LeaveTypes;
 
 namespace LeaveManagementSystem.Web.Controllers
 {
@@ -12,11 +12,12 @@ namespace LeaveManagementSystem.Web.Controllers
     /// </summary>
 
     [Authorize]
-    public class LeaveAllocationController(ILeaveAllocationsService _leaveAllocationsService, ILeaveTypesService _leaveTypesService) : Controller
+    public class LeaveAllocationController(ILeaveAllocationsService _leaveAllocationsService, ILeaveTypesService _leaveTypesService, ILogger <LeaveAllocationController> _logger) : Controller
     {
         /// <summary>
         /// Displays a list of all employees so the administrator can view or manage their leave allocations.
         /// </summary>
+
         [Authorize(Roles = Roles.Administrator)]
         public async Task<IActionResult> Index()
         {
@@ -78,6 +79,7 @@ namespace LeaveManagementSystem.Web.Controllers
                 await _leaveAllocationsService.EditAllocation(allocation);
                 return RedirectToAction(nameof(Details), new { userId = allocation.Employee.Id });
             }
+            _logger.LogWarning("Leave Type Attempt Failed Due To Invalidity");
 
             var days = allocation.Days;
             allocation = await _leaveAllocationsService.GetEmployeeAllocation(allocation.Id);
